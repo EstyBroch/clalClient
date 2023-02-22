@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Forecast } from '../Models/Forecast';
+import { Weather } from '../Models/Weather';
 
 @Injectable({
   providedIn: 'root'
@@ -8,9 +10,9 @@ import { HttpClient } from '@angular/common/http';
 export class WeatherService {
 baseUrl = "https://localhost:44381/api";
   constructor(private http: HttpClient) { }
-private location:string=""
+
 getWeather(location:string){
-  return this.http.get<string>(this.baseUrl+"/Forecast/Get3DaysWeather/"+location);
+  return this.http.get<Weather>(this.baseUrl+"/Forecast/Get3DaysWeather/"+location);
 }
 
 }
