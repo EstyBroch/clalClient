@@ -1,19 +1,24 @@
-
+<body>
 <label>הכנס עיר</label>
+<br>
+
 <input #location><br>
+<br>
 
 <button (click)="getWeather(location.value)">בדוק מזג אויר</button>
 
-   <ul >
-    <li *ngFor="let day of forecastday">
- תאריך: {{day.date}} טמפרטורה ממוצעת:{{day.day.avgtemp_c}}
-  מהירות הרוח:
-  {{day.day.avgvis_km}}
-    </li>
-    
+  
+    <ul *ngFor="let day of forecastday">
+      <li >
+        {{day.date}}
+    <ul *ngFor="let hour of day.hour">
+      <li>שעה: {{hour.time | date:'shortTime'}} טמפרטורה ממוצעת: {{hour.temp_c}}
+          מהירות הרוח: {{hour.temp_f}}</li>
+      </ul>
+      </li>
 </ul>  
 
-
+</body>
 
 
 
